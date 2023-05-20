@@ -1,0 +1,40 @@
+/*----------------------------------------
+    icon page
+------------------------------------------*/
+.icon-demo
+{
+    line-height: 50px;
+}
+
+.icon-container i
+{
+    font-size: 3em;
+
+    display: block;
+
+    margin-bottom: 10px;
+}
+
+.icon-container .icon-preview
+{
+    height: 120px;
+
+    text-align: center;
+}
+
+.icon-holder
+{
+    display: block;
+    float: right;
+
+    width: 150px;
+    height: 115px;
+    margin: 0 0 15px 0;
+
+    text-align: center;
+}
+
+.icon-holder p
+{
+    margin: 0;
+}

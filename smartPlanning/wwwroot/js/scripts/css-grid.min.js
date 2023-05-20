@@ -1,0 +1,1 @@
+var toggleContainersButton=$("#container-toggle-button");toggleContainersButton.click(function(){$("body .browser-window .container, .had-container").each(function(){$(this).toggleClass("had-container"),$(this).toggleClass("container"),$(this).hasClass("container")?toggleContainersButton.text("Turn off Containers"):toggleContainersButton.text("Turn on Containers")})});

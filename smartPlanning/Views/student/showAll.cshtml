@@ -1,0 +1,504 @@
+﻿
+@{
+    ViewBag.Title = "showAll";
+    Layout = "~/Views/Shared/_layout_admin.cshtml";
+}
+@model List<BE.student>
+@section pre{
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+        <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google.">
+        <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template, eCommerce dashboard, analytic dashboard">
+        <meta name="author" content="ThemeSelect">
+        <title>متریالایز | الگوی منوی تاریک عمودی | جدول داده </title>
+        <link rel="apple-touch-icon" href="~/wwwroot//images/favicon/apple-touch-icon-152x152.png">
+        <link rel="shortcut icon" type="image/x-icon" href="~/wwwroot/images/favicon/favicon-32x32.png">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <!-- BEGIN: VENDOR CSS-->
+        <link rel="stylesheet" type="text/css" href="~/wwwroot/vendors/vendors.min.css">
+        <link rel="stylesheet" type="text/css" href="~/wwwroot/vendors/flag-icon/css/flag-icon.min.css">
+        <link rel="stylesheet" type="text/css" href="~/wwwroot/vendors/data-tables/css/jquery.dataTables.min.css">
+        <link rel="stylesheet" type="text/css" href="~/wwwroot/vendors/data-tables/extensions/responsive/css/responsive.dataTables.min.css">
+        <link rel="stylesheet" type="text/css" href="~/wwwroot/vendors/data-tables/css/select.dataTables.min.css">
+        <!-- END: VENDOR CSS-->
+        <link rel="stylesheet" type="text/css" href="~/wwwroot/css-rtl/style-rtl.min.css">
+        <!-- BEGIN: Page Level CSS-->
+        <link rel="stylesheet" type="text/css" href="~/wwwroot/css-rtl/themes/vertical-dark-menu-template/materialize.min.css">
+        <link rel="stylesheet" type="text/css" href="~/wwwroot/css-rtl/themes/vertical-dark-menu-template/style.min.css">
+        <link rel="stylesheet" type="text/css" href="~/wwwroot/css/pages/data-tables.min.css">
+        <!-- END: Page Level CSS-->
+        <!-- BEGIN: Custom CSS-->
+        <link rel="stylesheet" type="text/css" href="~/wwwroot/css-rtl/custom/custom.css">
+        <!-- END: Custom CSS-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <style>
+            #data-table-simple_length {
+                display: none;
+            }
+
+
+            #data-table-simple_filter {
+                display: none
+            }
+
+            #modal1 {
+                overflow-y: hidden;
+            }
+
+            #divUpdate {
+                margin: auto;
+            }
+        </style>
+    </head>
+}
+<!-- DataTables example -->
+
+<div class="row">
+
+    <div class="col s12 m12 l12">
+        <div id="button-trigger" class="card card card-default scrollspy">
+            <div class="card-content">
+                <h4 class="card-title">لیست تمامی دانش آموزان</h4>
+                <div class="row">
+                    <div class="col s12">
+
+                        <p>
+                            برای مشاهده ، ویرایش و یا حذف اطلاعات میتوانید  دکمه مورد نظر خود را انتخاب کنید.
+                        </p>
+                        <p>
+                            همچنین برای جستجو بین دانش آموزان میتوانید در باکس جستجو ، نام ، نام خانوادگی و یا هر اطلاعات مرتبط دیگر با دانش آموز را جستجو کرده تا به رکورد مورد نظر خود دست پیدا کنید.
+                        </p>
+                        <br />
+
+                        <div class="input-field col s12">
+                            <label for="stFamily">جستجو دانش آموز</label>
+                            <input class="validate" placeholder="نام ، نام خانوادگی ، کد مشاوره ،پایه و یا معدل دانش آموز مورد نظر خود را وارد کنید..." required="" id="stSearch" name="stSearch" type="text">
+                        </div>
+
+                        <a id="btnSearch" class="waves-effect waves-light btn mb-1 mr-1" style="background-color:#ff4081;">جستجو</a>
+                    </div>
+
+                    <div class="col s12">
+                        <table id="data-table-simple" class="display">
+                            <thead>
+                                <tr>
+                                    <th>کد مشاوره</th>
+                                    <th>نام و نام خانوادگی</th>
+
+                                    <th>پایه</th>
+                                    <th>معدل</th>
+                                    <th>عکس</th>
+                                    <th>اطلاعات</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    foreach (var i in Model)
+                                    {
+                                        <tr >
+
+                                            <td>@i.id</td>
+                                            <td>@i.stName @i.stFamily</td>
+                                            <td>@i.stPaye</td>
+                                            <td>@i.stAverage</td>
+                                            <td>
+                                                <img src="~/uploads/images/students/@i.stPic" style="width: 50px;height: 50px" />
+                                            </td>
+                                            <td>
+                                                <a href="#modal1" class="waves-effect modal-trigger waves-light btn mb-1 btnShow" style="background-color:#4caf50;" onclick="show(@i.id)">
+                                                    <i class="material-icons" style="vertical-align: middle;">
+                                                        visibility
+                                                    </i>
+                                                    مشاهده
+                                                </a>
+
+                                                <a href="#modal1" class="waves-effect modal-trigger waves-light btn mb-1" style="background-color:#00bcd4;" onclick="edit(@i.id)">
+                                                    <i class="material-icons" style="vertical-align: middle;">open_in_new</i>
+
+                                                    ویرایش
+                                                </a>
+                                                <a href="#modal2" class="waves-effect modal-trigger waves-light btn mb-1 btnRemove" style="background-color:#f44336;" onclick="remove(@i.id)">
+                                                    <i class="material-icons" style="vertical-align: middle;">delete</i>
+                                                    حذف
+                                                </a>
+
+                                            </td>
+
+
+                                        </tr>
+                                    }
+                                }
+
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>کد مشاوره</th>
+                                    <th>نام و نام خانوادگی</th>
+                                    <th>پایه</th>
+                                    <th>معدل</th>
+                                    <th>عکس</th>
+                                    <th>اطلاعات</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modal1" class="modal modal-fixed-footer open">
+    <div class="modal-content">
+        <h4 id="title">ویرایش اطلاعات</h4>
+        <p id="subTitle">پس از ایجاد تغییرات در فرم زیر ، در انتهای فرم از دکمه ثبت تغییرات برای اعمال تغییرات در پرونده دانش آموز استفاده کنید.</p>
+        <div id="html-view-validations">
+            <form action="update" class="formValidate0" id="formValidate0" method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <div class=" col s12">
+                        <label for="id">کد مشاوره*</label>
+                        <input class="validate" required="" id="id" name="id" type="text">
+                    </div>
+                    <div class=" col s12">
+                        <label for="stName">نام*</label>
+                        <input class="validate" required="" id="stName" name="stName" type="text">
+                    </div>
+                    <div class="col s12">
+                        <label for="stFamily">نام خانوادگی*</label>
+                        <input class="validate" required="" id="stFamily" name="stFamily" type="text">
+                    </div>
+                    <div class="col s12">
+                        <p>جنسیت</p>
+                        <p>
+                            <label>
+                                <input class="validate" required="" name="gender" id="male" type="radio" value="مرد">
+                                <span>مرد</span>
+                            </label>
+                        </p>
+
+                        <label>
+                            <input class="validate" required="" name="gender" id="female" type="radio" value="زن">
+                            <span>زن</span>
+                        </label>
+                        <div class="input-field">
+                        </div>
+                    </div>
+                    <div class="col s12">
+                        <label for="role">پایه</label>
+                        <div class="select-wrapper">
+                            @*<input class="select-dropdown dropdown-trigger" type="text" readonly data-target="select-options-da39b930-61d1-0b2a-3c70-4873f2a4f36c">*@
+                            <ul id="select" class="dropdown-content select-dropdown" tabindex="0"><li class="disabled selected" id="select-options-da39b930-61d1-0b2a-3c70-4873f2a4f36c0" tabindex="0"><span>نمایه خود را انتخاب کنید</span></li><li id="select-options-da39b930-61d1-0b2a-3c70-4873f2a4f36c1" tabindex="0"><span>مدیر</span></li><li id="select-options-da39b930-61d1-0b2a-3c70-4873f2a4f36c2" tabindex="0"><span>توسعه دهنده</span></li><li id="select-options-da39b930-61d1-0b2a-3c70-4873f2a4f36c3" tabindex="0"><span>کسب و کار</span></li></ul><svg class="caret" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg><select class="error validate" id="stPaye" name="stPaye" required="" tabindex="-1" style="position: absolute; display: inline; height: 0px; padding: 0px; border: 1px solid rgba(255, 255, 255, 0); width: 0px;">
+                                <option value="" disabled="" selected="">پایه خود را انتخاب کنید</option>
+                                <option value="دهم">دهم</option>
+                                <option value="یازدهم">یازدهم</option>
+                                <option value="دوازدهم">دوازدهم</option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                        </div>
+                    </div>
+                    <div class="col s12">
+                        <label for="stClassNum">شماره کلاس*</label>
+                        <input class="validate" required="" id="stClassNum" name="stClassNum" type="text">
+                    </div>
+                    <div class="col s12">
+                        <label for="stMobile">شماره همراه*</label>
+                        <input class="validate" required="" id="stMobile" name="stPhoneNumber" type="text">
+                    </div>
+                    <div class=" col s12">
+                        <label for="stPhone">تلفن ثابت*</label>
+                        <input class="validate" required="" id="stPhone" name="stTel" type="text">
+                    </div>
+
+                    <div class=" col s12">
+                        <label for="stFatherNum">شماره همراه-پدر*</label>
+                        <input class="validate" required="" id="stFatherNum" name="stFatherNum" type="text">
+                    </div>
+                    <div class="col s12">
+                        <label for="stFatherNum">شماره همراه-مادر*</label>
+                        <input class="validate" required="" id="stMotherNum" name="stMotherNum" type="text">
+                    </div>
+
+                    <div class="col s12">
+                        <label class="validate" style="display:contents" for="stPic">عکس</label>
+                        <input type="file" name="stPic" id="stPic" />
+
+                    </div>
+                    <div class="col s12">
+                        <label for="stAddress">آدرس*</label>
+                        <input class="validate" id="stAddress" name="stAddress" type="text">
+                    </div>
+                    <div class="col s12">
+                        <label for="stAverage">معدل سال قبل*</label>
+                        <input class="validate" id="stAverage" name="stAverage" type="text">
+                    </div>
+                    <div class="col s12">
+                        <label for="stStrengthsPoint">نقاط قوت*</label>
+                        <input class="validate" required="" id="stStrengthsPoint" type="text" name="stStrengthsPoint">
+                    </div>
+                    <div class="col s12">
+                        <label for="stWeakPoint">نقاط ضعف*</label>
+                        <input class="validate" required="" id="stWeakPoint" type="text" name="stWeakPoint">
+                    </div>
+                    <div class="col s12">
+                        <label for="stFavoriteLesson">دروس مورد علاقه*</label>
+                        <input class="validate" required="" id="stFavoriteLesson" type="text" name="stFavoriteLesson">
+                    </div>
+                    <div class="col s12">
+                        <label for="stHateLesson">دروس مورد تنفر*</label>
+                        <input class="validate" required="" id="stHateLesson" type="text" name="stHateLesson">
+                    </div>
+
+
+
+
+
+                    <div class="col s12">
+                        <label for="stUserName">نام کاربری*</label>
+                        <input class="validate" required="" id="stUserName" name="stUserName" type="text">
+                    </div>
+                    <div class="col s12">
+                        <label for="email">ایمیل *</label>
+                        <input class="validate" required="" id="email" type="email" name="email">
+                    </div>
+                    <div class="col s12">
+                        <label for="stPassWord">رمز عبور *</label>
+                        <input class="validate" required="" id="stPassWord" type="password" name="stPassWord">
+                    </div>
+
+
+
+
+
+
+
+                    <button id="btnSub" class="modal-action modal-close btn waves-effect waves-light right iransans" type="submit" name="action">
+                        ثبت تغییرات
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div id="divUpdate" class="input-field col s12">
+            <a href="#!" id="mdCloze" class="modal-action modal-close waves-effect waves-green btn-flat ">رفتن به پرونده دانش آموز</a>
+            <a href="#!" id="mdCloze" class="modal-action modal-close waves-effect waves-green btn-flat ">بستن پنجره</a>
+        </div>
+    </div>
+</div>
+<div id="modal2" class="modal modal-fixed-footer open" tabindex="0" style="height:40%;">
+    <div class="modal-content">
+        <h4>حذف کاربر</h4>
+        <p style="text-align:center">هشدار!!!!</p>
+        <p style="text-align:center">
+            بعد از حذف کردن کاربر امکان بازیانی آن وجود ندارد...
+        </p>
+        <p style="text-align:center">
+            از حذف کردن کاربر مطمئن هستید؟
+        </p>
+
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat ">دست نگه دار!</a>
+        <a href="#!" id="btnDel" class="modal-action modal-close waves-effect waves-green btn-flat " onclick="FinishDel()">حذف کن</a>
+    </div>
+</div>
+
+@section Scripts{
+
+    <!-- BEGIN VENDOR JS-->
+    <!-- BEGIN PAGE VENDOR JS-->
+    <script src="~/wwwroot/vendors/data-tables/js/jquery.dataTables.min.js"></script>
+    <script src="~/wwwroot/vendors/data-tables/extensions/responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/wwwroot/vendors/data-tables/js/dataTables.select.min.js"></script>
+    <!-- END PAGE VENDOR JS-->
+    <!-- BEGIN THEME  JS-->
+    <!-- END THEME  JS-->
+    <!-- BEGIN PAGE LEVEL JS-->
+    <script src="~/wwwroot/js/scripts/data-tables.min.js"></script>
+    <!-- END PAGE LEVEL JS-->
+    <!-- BEGIN PAGE LEVEL JS-->
+    <!-- END PAGE LEVEL JS-->
+    <script src="~/wwwroot/js/scripts/advance-ui-modals.min.js"></script>
+    <script>
+
+    $(document).ready(function () {
+
+
+
+
+        $("#btnSearch").click(function () {
+            var tags = $("#stSearch").val();
+
+
+
+
+            $.ajax({
+                url: "@Url.Action("stjson","student")",
+                type: 'post',
+                contentType: 'application/json;charset=utf-8',
+                data: JSON.stringify({ "tags": tags }),
+                success: function (data) {
+
+                    window.location = data.redirect + "?" + 'tag=' + tags;
+                },
+                Error: function (errorThrown) {
+                    console.log(errorThrown);
+                }
+            });
+
+        });
+
+
+
+
+
+
+
+    });
+    var selectID=0;
+    function edit(unique) {
+        var id = unique;
+        $.ajax({
+            url: '/student/show',
+            type: 'post',
+            contentType: 'application/json',
+            processData: false,
+            data: JSON.stringify({ "id": id }),
+            beforeSend: function () {
+                $("#title").text("ویرایش اطلاعات");
+                $("#subTitle").text("شما در این صفحه میتوانید تمامی اطلاعات پرونده دانش آموز را مشاهده کنید اما امکان هیچگونه ایجاد تغییرات در پرونده دانش آموز را ندارید.برای ایجاد تغییرات  باید از دکمه ویرایش استفاده نمایید.");$("#subTitle").text("پس از ایجاد تغییرات در فرم زیر ، در انتهای فرم از دکمه ثبت تغییرات برای اعمال تغییرات در پرونده دانش آموز استفاده کنید.");
+                $("#formValidate0 :input").css("font-weight", "bold");
+                $("#formValidate0 :input").css("color", "black");
+                $("#btnSub").css("display", "block");
+                $("#formValidate0 :input").attr('disabled', false);
+                $("#formValidate0 :input").attr('readonly', false);
+                $("#id").attr('readonly', true);
+            }
+            ,
+            success: function (data) {
+                $("#id").val(JSON.parse(JSON.stringify(data.id)));
+                $("#stName").val(JSON.parse(JSON.stringify(data.stName)));
+                $("#stFamily").val(JSON.parse(JSON.stringify(data.stFamily)));
+                if (JSON.parse(JSON.stringify(data.gender)) == "مرد") {
+                    $("#male").attr('checked', 'checked');
+                }
+                else {
+                    $("#female").attr('checked', 'checked');
+                }
+                $(".select-dropdown").val(JSON.parse(JSON.stringify(data.stPaye)));
+                $("#stPaye").val(JSON.parse(JSON.stringify(data.stPaye)));
+                $("#stClassNum").val(JSON.parse(JSON.stringify(data.stClassNum)));
+                $("#stMobile").val(JSON.parse(JSON.stringify(data.stPhoneNumber)));
+                $("#stPhone").val(JSON.parse(JSON.stringify(data.stTel)));
+                $("#stFatherNum").val(JSON.parse(JSON.stringify(data.stFatherNum)));
+                $("#stMotherNum").val(JSON.parse(JSON.stringify(data.stMotherNum)));
+
+                ////$("#stPic").val(JSON.parse(JSON.stringify(data.stPic)));
+
+                $("#stAddress").val(JSON.parse(JSON.stringify(data.stAddress)));
+                $("#stAverage").val(JSON.parse(JSON.stringify(data.stAverage)));
+                $("#stStrengthsPoint").val(JSON.parse(JSON.stringify(data.stStrengthsPoint)));
+                $("#stWeakPoint").val(JSON.parse(JSON.stringify(data.stWeakPoint)));
+                $("#stFavoriteLesson").val(JSON.parse(JSON.stringify(data.stFavoriteLesson)));
+                $("#stHateLesson").val(JSON.parse(JSON.stringify(data.stHateLesson)));
+                $("#stUserName").val(JSON.parse(JSON.stringify(data.stUserName)));
+                $("#email").val(JSON.parse(JSON.stringify(data.email)));
+                $("#stPassWord").val(JSON.parse(JSON.stringify(data.stPassWord)));
+
+
+            },
+            error: function (errorThrown) {
+                console.log(errorThrown);
+            }
+
+        });
+            };
+    function show(uniq) {
+        var id = uniq;
+        $.ajax({
+            url: '/student/show',
+            type: 'post',
+            contentType: 'application/json',
+            processData: false,
+            data: JSON.stringify({ "id": id }),
+            beforeSend: function () {
+                $("#subTitle").text("شما در این صفحه میتوانید تمامی اطلاعات پرونده دانش آموز را مشاهده کنید اما امکان هیچگونه ایجاد تغییرات در پرونده دانش آموز را ندارید.برای ایجاد تغییرات  باید از دکمه ویرایش استفاده نمایید.");$("#subTitle").text("شما در این صفحه میتوانید تمامی اطلاعات پرونده دانش آموز را مشاهده کنید اما امکان هیچگونه ایجاد تغییرات در پرونده دانش آموز را ندارید.برای ایجاد تغییرات  باید از دکمه ویرایش استفاده نمایید.");
+                $("#title").text("مشاهده اطلاعات");
+                $("#formValidate0 :input").attr('readonly', true);
+                $("#formValidate0 :input").attr('disabled', true);
+                $("#formValidate0 :input").css("font-weight", "bold");
+                $("#formValidate0 :input").css("color", "black");
+                $("#btnSub").css("display", "none");
+            }
+            ,
+            success: function (data) {
+                $("#id").val(JSON.parse(JSON.stringify(data.id)));
+                $("#stName").val(JSON.parse(JSON.stringify(data.stName)));
+                $("#stFamily").val(JSON.parse(JSON.stringify(data.stFamily)));
+                if (JSON.parse(JSON.stringify(data.gender)) == "مرد") {
+                    $("#male").attr('checked', 'checked');
+                }
+                else {
+                    $("#female").attr('checked', 'checked');
+                }
+                $(".select-dropdown").val(JSON.parse(JSON.stringify(data.stPaye)));
+                $("#stPaye").val(JSON.parse(JSON.stringify(data.stPaye)));
+                $("#stClassNum").val(JSON.parse(JSON.stringify(data.stClassNum)));
+                $("#stMobile").val(JSON.parse(JSON.stringify(data.stPhoneNumber)));
+                $("#stPhone").val(JSON.parse(JSON.stringify(data.stTel)));
+                $("#stFatherNum").val(JSON.parse(JSON.stringify(data.stFatherNum)));
+                $("#stMotherNum").val(JSON.parse(JSON.stringify(data.stMotherNum)));
+
+                ////$("#stPic").val(JSON.parse(JSON.stringify(data.stPic)));
+
+                $("#stAddress").val(JSON.parse(JSON.stringify(data.stAddress)));
+                $("#stAverage").val(JSON.parse(JSON.stringify(data.stAverage)));
+                $("#stStrengthsPoint").val(JSON.parse(JSON.stringify(data.stStrengthsPoint)));
+                $("#stWeakPoint").val(JSON.parse(JSON.stringify(data.stWeakPoint)));
+                $("#stFavoriteLesson").val(JSON.parse(JSON.stringify(data.stFavoriteLesson)));
+                $("#stHateLesson").val(JSON.parse(JSON.stringify(data.stHateLesson)));
+                $("#stUserName").val(JSON.parse(JSON.stringify(data.stUserName)));
+                $("#email").val(JSON.parse(JSON.stringify(data.email)));
+                $("#stPassWord").val(JSON.parse(JSON.stringify(data.stPassWord)));
+
+
+            },
+            error: function (errorThrown) {
+                console.log(errorThrown);
+            }
+
+        });
+    };
+    function remove(uniq) {
+        selectID = uniq;
+
+
+    }
+    function FinishDel() {
+        var id = selectID;
+        $.ajax({
+            url: '/student/remove',
+            type: 'post',
+            contentType: 'application/json',
+            processData: false,
+            data: JSON.stringify({ "id": id }),
+            success: function () {
+                location.reload();
+            },
+            error: function (errorThrown) {
+                console.log(errorThrown);
+            }
+        })
+            }
+
+    </script>
+
+}
+

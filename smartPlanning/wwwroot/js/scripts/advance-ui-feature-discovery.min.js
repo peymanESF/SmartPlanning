@@ -1,0 +1,1 @@
+$(function(){$(".tap-target").tapTarget()});

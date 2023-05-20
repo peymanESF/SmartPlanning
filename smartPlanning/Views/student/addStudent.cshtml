@@ -1,0 +1,188 @@
+﻿
+@{
+    ViewBag.Title = "addStudent";
+    Layout = "~/Views/Shared/_layout_admin.cshtml";
+}
+@section pre{
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google.">
+    <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template, eCommerce dashboard, analytic dashboard">
+    <meta name="author" content="ThemeSelect">
+    <title>متریالایز | الگوی منوی تاریک عمودی | فرم اعتبارسنجی </title>
+    <link rel="apple-touch-icon" href="~/wwwroot/images/favicon/apple-touch-icon-152x152.png">
+    <link rel="shortcut icon" type="image/x-icon" href="~/wwwroot/images/favicon/favicon-32x32.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- BEGIN: VENDOR CSS-->
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/vendors/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/vendors/flag-icon/css/flag-icon.min.css">
+    <!-- END: VENDOR CSS-->
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/css-rtl/style-rtl.min.css">
+    <!-- BEGIN: Page Level CSS-->
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/css-rtl/themes/vertical-dark-menu-template/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/css-rtl/themes/vertical-dark-menu-template/style.min.css">
+    <!-- END: Page Level CSS-->
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/css-rtl/custom/custom.css">
+    <!-- END: Custom CSS-->
+}
+<div class="row">
+    <div class="col s12">
+        <div id="html-validations" class="card card-tabs">
+            <div class="card-content">
+                <div class="card-title">
+                    <div class="row">
+                        <div class="col s12 m6 l10">
+                            <h4 class="card-title">افزودن دانش آموز جدید</h4>
+                        </div>
+                        <div class="col s12 m6 l2">
+                        </div>
+                    </div>
+                </div>
+                <div id="html-view-validations">
+                    <form action="create" class="formValidate0" id="formValidate0" method="post" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <label for="stName">نام*</label>
+                                <input class="validate" required="" id="stName" name="stName" type="text">
+                            </div>
+                            <div class="input-field col s12">
+                                <label for="stFamily">نام خانوادگی*</label>
+                                <input class="validate" required="" id="stFamily" name="stFamily" type="text">
+                            </div>
+                            <div class="col s12">
+                                <p>جنسیت</p>
+                                <p>
+                                    <label>
+                                        <input class="validate" required="" name="gender" type="radio" checked="" value="مرد">
+                                        <span>مرد</span>
+                                    </label>
+                                </p>
+
+                                <label>
+                                    <input class="validate" required="" name="gender" type="radio" value="زن">
+                                    <span>زن</span>
+                                </label>
+                                <div class="input-field">
+                                </div>
+                            </div>
+                            <div class="col s12">
+                                <label for="role">پایه</label>
+                                <div class="select-wrapper">
+                                    @*<input class="select-dropdown dropdown-trigger" type="text" readonly data-target="select-options-da39b930-61d1-0b2a-3c70-4873f2a4f36c">*@
+                                    <ul id="select-options-da39b930-61d1-0b2a-3c70-4873f2a4f36c" class="dropdown-content select-dropdown" tabindex="0"><li class="disabled selected" id="select-options-da39b930-61d1-0b2a-3c70-4873f2a4f36c0" tabindex="0"><span>نمایه خود را انتخاب کنید</span></li><li id="select-options-da39b930-61d1-0b2a-3c70-4873f2a4f36c1" tabindex="0"><span>مدیر</span></li><li id="select-options-da39b930-61d1-0b2a-3c70-4873f2a4f36c2" tabindex="0"><span>توسعه دهنده</span></li><li id="select-options-da39b930-61d1-0b2a-3c70-4873f2a4f36c3" tabindex="0"><span>کسب و کار</span></li></ul><svg class="caret" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg><select class="error validate" id="stPaye" name="stPaye" required="" tabindex="-1" style="position: absolute; display: inline; height: 0px; padding: 0px; border: 1px solid rgba(255, 255, 255, 0); width: 0px;">
+                                        <option value="" disabled="" selected="">پایه خود را انتخاب کنید</option>
+                                        <option value="دهم">دهم</option>
+                                        <option value="یازدهم">یازدهم</option>
+                                        <option value="دوازدهم">دوازدهم</option>
+                                    </select>
+                                </div>
+                                <div class="input-field">
+                                </div>
+                            </div>
+                            <div class="input-field col s12">
+                                <label for="stClassNum">شماره کلاس*</label>
+                                <input class="validate" required="" id="stClassNum" name="stClassNum" type="text">
+                            </div>
+                            <div class="input-field col s12">
+                                <label for="stMobile">شماره همراه*</label>
+                                <input class="validate" required="" id="stMobile" name="stPhoneNumber" type="text">
+                            </div>
+                            <div class="input-field col s12">
+                                <label for="stPhone">تلفن ثابت*</label>
+                                <input class="validate" required="" id="stPhone" name="stTel" type="text">
+                            </div>
+
+                            <div class="input-field col s12">
+                                <label for="stFatherNum">شماره همراه-پدر*</label>
+                                <input class="validate" required="" id="stFatherNum" name="stFatherNum" type="text">
+                            </div>
+                            <div class="input-field col s12">
+                                <label for="stFatherNum">شماره همراه-مادر*</label>
+                                <input class="validate" required="" id="stMotherNum" name="stMotherNum" type="text">
+                            </div>
+
+                            <div class="input-field col s12">
+                                <label class="validate" style="display:contents" for="stPic">عکس</label>
+                                <input type="file" name="stPic" id="stPic" />
+
+                            </div>
+                            <div class="input-field col s12">
+                                <label for="stAddress">آدرس*</label>
+                                <input class="validate" id="stAddress" name="stAddress" type="text">
+                            </div>
+                            <div class="input-field col s12">
+                                <label for="stAverage">معدل سال قبل*</label>
+                                <input class="validate" id="stAverage" name="stAverage" type="text">
+                            </div>
+                            <div class="input-field col s12">
+                                <label for="stStrengthsPoint">نقاط قوت*</label>
+                                <input class="validate" required="" id="stStrengthsPoint" type="text" name="stStrengthsPoint">
+                            </div>
+                            <div class="input-field col s12">
+                                <label for="stWeakPoint">نقاط ضعف*</label>
+                                <input class="validate" required="" id="stWeakPoint" type="text" name="stWeakPoint">
+                            </div>
+                            <div class="input-field col s12">
+                                <label for="stFavoriteLesson">دروس مورد علاقه*</label>
+                                <input class="validate" required="" id="stFavoriteLesson" type="text" name="stFavoriteLesson">
+                            </div>
+                            <div class="input-field col s12">
+                                <label for="stHateLesson">دروس مورد تنفر*</label>
+                                <input class="validate" required="" id="stHateLesson" type="text" name="stHateLesson">
+                            </div>
+
+
+
+
+
+                            <div class="input-field col s12">
+                                <label for="stUserName">نام کاربری*</label>
+                                <input class="validate" required="" id="stUserName" name="stUserName" type="text">
+                            </div>
+                            <div class="input-field col s12">
+                                <label for="email">ایمیل *</label>
+                                <input class="validate" required="" id="email" type="email" name="email">
+                            </div>
+                            <div class="input-field col s12">
+                                <label for="stPassWord">رمز عبور *</label>
+                                <input class="validate" required="" id="stPassWord" type="password" name="stPassWord">
+                            </div>
+
+
+
+
+
+
+
+                            <div class="input-field col s12">
+                                <button class="btn waves-effect waves-light right iransans" type="submit" name="action">
+                                    ارسال
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <!-- BEGIN VENDOR JS-->
+    <script src="~/wwwroot/js/vendors.min.js"></script>
+    <!-- BEGIN VENDOR JS-->
+    <!-- BEGIN PAGE VENDOR JS-->
+    <script src="~/wwwroot/vendors/jquery-validation/jquery.validate.min.js"></script>
+    <!-- END PAGE VENDOR JS-->
+    <!-- BEGIN THEME  JS-->
+    <script src="~/wwwroot/js/plugins.min.js"></script>
+    <script src="~/wwwroot/js/search.min.js"></script>
+    <script src="~/wwwroot/js-rtl/custom/custom-script-rtl.min.js"></script>
+    <script src="~/wwwroot/js/scripts/customizer.min.js"></script>
+    <!-- END THEME  JS-->
+    <!-- BEGIN PAGE LEVEL JS-->
+    <script src="~/wwwroot/js/scripts/form-validation.js"></script>
+    <!-- END PAGE LEVEL JS-->
+}

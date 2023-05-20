@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'IRANSans';
+    src: url('../../fonts/IRANSans/eot/IRANSansWeb.eot'); /* IE9 Compat Modes */
+    src: url('../../fonts/IRANSans/eot/IRANSansWeb.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../../fonts/IRANSans/woff2/IRANSansWeb.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../../fonts/IRANSans/woff/IRANSansWeb.woff') format('woff'), /* Pretty Modern Browsers */
+         url('../../fonts/IRANSans/ttf/IRANSansWeb.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: 'IRANSans_Black';
+    src: url('../../fonts/IRANSans/eot/IRANSansWeb_Black.eot'); /* IE9 Compat Modes */
+    src: url('../../fonts/IRANSans/eot/IRANSansWeb_Black.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../../fonts/IRANSans/woff2/IRANSansWeb_Black.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../../fonts/IRANSans/woff/IRANSansWeb_Black.woff') format('woff'), /* Pretty Modern Browsers */
+         url('../../fonts/IRANSans/ttf/IRANSansWeb_Black.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: 'IRANSans_Bold';
+    src: url('../../fonts/IRANSans/eot/IRANSansWeb_Bold.eot'); /* IE9 Compat Modes */
+    src: url('../../fonts/IRANSans/eot/IRANSansWeb_Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../../fonts/IRANSans/woff2/IRANSansWeb_Bold.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../../fonts/IRANSans/woff/IRANSansWeb_Bold.woff') format('woff'), /* Pretty Modern Browsers */
+         url('../../fonts/IRANSans/ttf/IRANSansWeb_Bold.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: 'IRANSans_Light';
+    src: url('../../fonts/IRANSans/eot/IRANSansWeb_Light.eot'); /* IE9 Compat Modes */
+    src: url('../../fonts/IRANSans/eot/IRANSansWeb_Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../../fonts/IRANSans/woff2/IRANSansWeb_Light.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../../fonts/IRANSans/woff/IRANSansWeb_Light.woff') format('woff'), /* Pretty Modern Browsers */
+         url('../../fonts/IRANSans/ttf/IRANSansWeb_Light.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: 'IRANSans_Medium';
+    src: url('../../fonts/IRANSans/eot/IRANSansWeb_Medium.eot'); /* IE9 Compat Modes */
+    src: url('../../fonts/IRANSans/eot/IRANSansWeb_Medium.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../../fonts/IRANSans/woff2/IRANSansWeb_Medium.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../../fonts/IRANSans/woff/IRANSansWeb_Medium.woff') format('woff'), /* Pretty Modern Browsers */
+         url('../../fonts/IRANSans/ttf/IRANSansWeb_Medium.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: 'IRANSans_UltraLight';
+    src: url('../../fonts/IRANSans/eot/IRANSansWeb_UltraLight.eot'); /* IE9 Compat Modes */
+    src: url('../../fonts/IRANSans/eot/IRANSansWeb_UltraLight.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../../fonts/IRANSans/woff2/IRANSansWeb_UltraLight.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../../fonts/IRANSans/woff/IRANSansWeb_UltraLight.woff') format('woff'), /* Pretty Modern Browsers */
+         url('../../fonts/IRANSans/ttf/IRANSansWeb_UltraLight.ttf')  format('truetype'); /* Safari, Android, iOS */
+}

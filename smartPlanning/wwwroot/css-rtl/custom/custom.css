@@ -1,0 +1,56 @@
+/*================================================================================
+	Item Name: Materialize - Material Design Admin Template
+	Version: 5.0
+	Author: PIXINVENT
+	Author URL: https://themeforest.net/user/pixinvent/portfolio
+================================================================================
+
+NOTE:
+------
+PLACE HERE YOUR OWN CSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
+WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+
+@import 'iransans.css';
+@import 'material-icons.css';
+body {
+    font-family: 'IRANSans', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'IRANSans_Bold', sans-serif;
+}
+
+p {
+    font-family: 'IRANSans_Medium', sans-serif;
+}
+/* کلاس فونت ایران سنس */
+.iransans {
+    font-family: 'IRANSans_UltraLight', sans-serif;
+}
+/* اطلاعیه ها */
+span.badge.new:after {
+    content: ' جدید';
+}
+/* صفحه تماس با ما */
+.contact-input{
+    padding-right: 10px;
+}
+input.select-dropdown.dropdown-trigger{
+    font-family: 'IRANSans_Light', sans-serif;
+}
+
+input{
+    font-family: 'IRANSans_UltraLight', sans-serif;
+}
+button {
+    font-family: 'IRANSans_Light', sans-serif;
+}
+.price-rtl{
+    direction: rtl !important;
+    text-align: left !important;
+}
